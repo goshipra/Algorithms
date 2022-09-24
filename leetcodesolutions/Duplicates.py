@@ -19,6 +19,6 @@ class Solution(object):
         return False
 
 
-nums = [i for i in range(-24500,29999)]
+nums = [1,2,3,1]
 obj = Solution()
 print(obj.containsDuplicate(nums))

@@ -18,7 +18,6 @@ def BubbleSort(lista):
                 lista[itr], lista[itr + 1] = lista[itr + 1], lista[itr]
                 checker += 1
             itr += 1
-
         print("array: ", lista)
 
         if checker == 0:
@@ -27,6 +26,6 @@ def BubbleSort(lista):
     return lista
 
 
-lista = [1, 2, 3, 4, 5, 6, 7, 7, 88]
+lista = [88,9,8,5,67,8,1,2]
 sortedlist = BubbleSort(lista)
 print("final array: ", sortedlist)

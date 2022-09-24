@@ -15,6 +15,6 @@ class Solution(object):
         return result
 
 
-digits = [19]
+digits = [0, 0, 0]
 obj = Solution()
 print(obj.plusOne(digits))
