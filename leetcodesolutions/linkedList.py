@@ -77,7 +77,7 @@ class LinkedList():
             itr = itr.next
             count += 1
 
-    def insertByValue(self, value ,data):
+    def insertByValue(self, value, data):
 
         if self.head == None:
             return
@@ -120,17 +120,24 @@ class LinkedList():
             print(itr.data)
             itr = itr.next
 
+    def remove_duplicates(self):
+        if self.head is None:
+            return
+
+        itr = self.head
+
+        while itr:
+            if itr.next and itr.next.data == itr.data:
+                itr.next = itr.next.next
+            else:
+                itr = itr.next
+
+
 
 newList = LinkedList()
 newList.lprint()
-newList.insertBeginning(8)
-newList.insertBeginning(10)
-newList.insertEnd(9)
-list = [5, 4, 3, 2, 1]
-newList.NewList(list)
-newList.listlength()
-newList.removebyindex(0)
-newList.insertIndex(4, 89)
-newList.removeByValue(89)
-newList.insertByValue(10,90)
+Inputlist = [1,1,2,2,3,3]
+newList.NewList(Inputlist)
+newList.remove_duplicates()
+
 newList.lprint()
