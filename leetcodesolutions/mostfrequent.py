@@ -20,15 +20,15 @@ class Solution(object):
                 else:
                     dict[num] = 1
                 evencount += 1
-        print(dict)
+
         if evencount == 0:
             return -1
-        else:
+        maximum = max(dict.values())
+        value = {i for i in dict if dict[i]== maximum}
+        return min(value)
 
-            return min(dict)
 
 
-
-nums = [1,2,2,4,4,6,4,6]
+nums = []
 obj = Solution()
 print(obj.mostFrequentEven(nums))
