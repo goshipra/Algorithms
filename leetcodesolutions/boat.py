@@ -9,26 +9,41 @@ class Solution(object):
     Rescue boat algorithm which has limit of max weight of people
     and number of people to be rescued.
     '''
-
     def numRescueBoats(self, people, limit):
-        count = 0
-        index = 0
-        length = len(people) - 1
-
         people.sort()
-
-        while index <= length:
-            remain = limit - people[length]
-
-            length -= 1
-            if people[index] <= remain:
-                index += 1
-            count += 1
+        left,right = 0,len(people)-1
+        count = 0
+        while left <= right:
+            if (people[right] + people[left]) <= limit:
+                count += 1
+                left = left + 1
+                right = right -1
+            else:
+                count += 1
+                right = right -1
 
         return count
 
 
+    # def numRescueBoats(self, people, limit):
+    #     people.sort()
+    #     left = 0
+    #     right = len(people) - 1
+    #     count = 0
+    #
+    #     while left <= right:
+    #         remaining = limit - people[right]
+    #         if left <= right and remaining >= people[left]:
+    #             left += 1
+    #         right -= 1
+    #         count += 1
+    #
+    #     return count
+
+
+
+
 # Main Program
-people = [2,2,1]
+people = [1,2,2,3]
 min_boats = Solution()
-print(min_boats.numRescueBoats(people, limit=5))
+print(min_boats.numRescueBoats(people, limit=3))

@@ -12,10 +12,7 @@ class Solution(object):
         """
         if needle == '':
             return 0
-        # if needle in haystack:
-        #     return haystack.index(needle)
-        # else:
-        #     return -1
+
         lenghtNeedle = len(needle)
         for i in range(len(haystack)):
             if needle == haystack[i:i+lenghtNeedle]:
@@ -23,7 +20,7 @@ class Solution(object):
 
         return -1
 
-haystack = 'hellolaopslola'
-needle = 'lola'
+haystack = 'hellilaopslila'
+needle = 'lila'
 obj = Solution()
 print(obj.strStr(haystack,needle))

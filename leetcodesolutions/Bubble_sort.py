@@ -11,7 +11,7 @@ def userInput():
     initialListOfNumbers = []
     userInputNumber = 0
     while userInputNumber != '':
-        userInputNumber = input("Enter the value to create a list: ")
+        userInputNumber = input("Enter the value to create a list and press enter: ")
         initialListOfNumbers.append(userInputNumber)
 
 
@@ -30,9 +30,10 @@ def bubbleSortNumbers(initialListOfNumbers):
             if initialListOfNumbers[j] > initialListOfNumbers[j + 1]:
                 initialListOfNumbers[j], initialListOfNumbers[j + 1] = \
                     initialListOfNumbers[j+1], initialListOfNumbers[j]
+                logging.debug(initialListOfNumbers)
             else:
                 continue
-        logging.debug(initialListOfNumbers)
+
     print("The final sorted list:", initialListOfNumbers)
 
 logging.basicConfig(level=logging.DEBUG)

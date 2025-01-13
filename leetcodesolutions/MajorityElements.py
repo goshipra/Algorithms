@@ -17,9 +17,10 @@ class Solution(object):
             newDict[countOfValue] = element
 
         maxValue = max(newDict)
+        print(maxValue)
         return newDict[maxValue]
 
 
-nums = [2,2,1,1,1,1,2]
+nums = [2,2,1,1,1,1,2,2,2,2]
 obj = Solution()
 print(obj.majorityElement(nums))

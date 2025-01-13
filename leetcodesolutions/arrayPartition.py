@@ -16,8 +16,6 @@ class Solution(object):
         return res
 
 
-
-
 nums = [6, 2, 6, 5, 1, 2]
 obj = Solution()
 print(obj.arrayPairSum(nums))

@@ -29,4 +29,4 @@ class Solution(object):
 
 
 obj = Solution()
-print(obj.getRow(3))
+print(obj.getRow(5))

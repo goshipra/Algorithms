@@ -24,7 +24,7 @@ class Solution(object):
 
 
 
-prices =[2,4,1]
+prices =[7,6,5,4,3,2,1]
  # [7,1,5,3,6,4]
 # [2,4,1]
 obj = Solution()

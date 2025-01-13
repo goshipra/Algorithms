@@ -9,9 +9,8 @@ class Solution(object):
             find lenth of last word in a sentence
         """
         result = 0
-        newString = s.strip()
 
-        for c in reversed(newString):
+        for c in reversed(s):
             if c == ' ':
                 break
             else:

@@ -37,9 +37,13 @@ class MinStack(object):
             return min(self.stack)
 
 
-
 obj = MinStack()
-
+obj.push(3)
+obj.push(4)
+obj.push(2)
+obj.push(5)
+obj.pop()
 print(obj.getMin())
+print(obj.top())
 
 

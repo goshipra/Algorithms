@@ -8,27 +8,34 @@ class Solution(object):
         :type nums: List[int]
         :rtype: int
         """
-        evencount = 0
-        dict = {}
+        evendict = {}
+        if len(nums) == 0:
+            return -1
 
         for num in nums:
             if num % 2 != 0:
                 continue
             else:
-                if num in dict:
-                    dict[num] = dict[num] + 1
+                if num in evendict:
+                    evendict[num] = evendict[num] + 1
                 else:
-                    dict[num] = 1
-                evencount += 1
+                    evendict[num] = 1
 
-        if evencount == 0:
+        print(evendict)
+        if len(evendict) == 0:
             return -1
-        maximum = max(dict.values())
-        value = {i for i in dict if dict[i]== maximum}
-        return min(value)
+        maximum = max(evendict.values())
+        maxlist = []
+        for key in evendict:
+            if evendict[key] == maximum:
+                maxlist.append(key)
+
+        return min(maxlist)
 
 
 
-nums = []
+
+
+nums = [0,1,2,2,4,4,1]
 obj = Solution()
 print(obj.mostFrequentEven(nums))

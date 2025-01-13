@@ -4,7 +4,7 @@
 
 def clockAngle(hours, minutes):
     """
-    Given hours and minutes of the clock and return timings
+    Given hours and minutes of the clock and return angle
     """
 
     MinuteHandAnglePerMinute = 360 / 60
@@ -19,5 +19,5 @@ def clockAngle(hours, minutes):
     return MinAngle
 
 
-result = clockAngle(12, 30)
+result = clockAngle(2, 45)
 print(result)

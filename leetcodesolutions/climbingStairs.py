@@ -4,7 +4,7 @@
 
 class Solution(object):
     def climbStairs(self, n):
-        one ,two = 1, 1
+        one,two = 1, 1
 
         for i in range(n-1):
             temp = one
@@ -14,4 +14,4 @@ class Solution(object):
         return one
 
 obj = Solution()
-print(obj.climbStairs(100))
+print(obj.climbStairs(4))

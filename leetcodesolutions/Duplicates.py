@@ -9,12 +9,12 @@ class Solution(object):
         value appears at least twice in the array,
          and return false if every element is distinct.
         '''
-        newlist = set()
+        newset = set()
         for num in nums:
-            if num in newlist:
+            if num in newset:
                 return True
             else:
-                newlist.add(num)
+                newset.add(num)
 
         return False
 

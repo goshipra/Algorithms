@@ -12,7 +12,7 @@ class Solution:
 
         low = 0
         high = len(nums) - 1
-        mid = int(high / 2)
+        mid = int((high + low)/ 2)
 
         if target == nums[mid]:
             return mid
@@ -29,7 +29,7 @@ class Solution:
         return -1
 
 
-nums = [90,90]
+nums = [20,30,90,90,90,90,95,97,98,99,100]
 target = 90
 obj = Solution()
 print(obj.search(nums, target))

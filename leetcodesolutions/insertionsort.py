@@ -4,6 +4,7 @@
 import logging
 import sys
 
+
 def userInput():
     '''
     Taking numbers as user input and
@@ -20,25 +21,20 @@ def userInput():
     return initialListOfNumbers
 
 
-def InsertionSortNumbers(initialListOfNumbers):
+def InsertionSortNumbers(iLON):
     '''
     Sorting a list of numbers using
     insertion sort algorithm
     '''
-    for i in range(len(initialListOfNumbers)-1):
-        for j in range(len(initialListOfNumbers)-1):
-            if initialListOfNumbers[j] > initialListOfNumbers[j+1]:
-                if initialListOfNumbers[j-1] > initialListOfNumbers[j+1]:
-                    initialListOfNumbers[j-1] , initialListOfNumbers[j+1] = \
-                    initialListOfNumbers[j+1] , initialListOfNumbers[j-1]
-                else:
-                    initialListOfNumbers[j],initialListOfNumbers[j+1] = \
-                    initialListOfNumbers[j+1],initialListOfNumbers[j]
-            else:
-                continue
-            logging.debug(initialListOfNumbers)
+    for i in range(1,len(iLON)):
+        key = iLON[i]
+        j = i -1
+        while j >= 0 and iLON[j] > key:
+            iLON[j+1] = iLON[j]
+            j -= 1
+        iLON[j+1] = key
 
-    print("The final sorted list:", initialListOfNumbers)
+    print(iLON)
 
 
 logging.basicConfig(level=logging.DEBUG)
