@@ -7,7 +7,6 @@ def check_prime(num):
         print("Prime ")
         return
     for i in range(2,(num // 2)+2):
-        print(i, num)
         if num % i == 0:
             print("not prime")
             return
