@@ -2,18 +2,31 @@
 # pallindrome.py
 # Author : Shipra
 
-def pallindrome(string):
+class Solution():
+    def isPalindrome(self, string):
+        if len(string) <= 1:
+            return True
 
-    result = ''
-    for i in range(1,len(string)+1):
-        res = string[len(string) - i]
-        result += res
+        def cleanString(string):
+            newstring = ''
+            for element in string:
+                if element.isalnum():
+                    newstring = newstring + element.lower()
+            print(newstring)
+            return newstring
 
-    if result == string:
-        return True
-    else:
-        return False
+        string = cleanString(string)
+        result = ''
+        for i in range(1, len(string) + 1):
+            res = string[len(string) - i]
+            result += res
+
+        if result == string:
+            return True
+        else:
+            return False
 
 
-string = "1234321"
-print(pallindrome(string))
+string = ""
+obj = Solution()
+print(obj.isPalindrome(string))
