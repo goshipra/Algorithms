@@ -22,7 +22,20 @@ class Solution:
 #code here
 
 
-arr = [0,1,1,1,1]
-n = 11
-obj = Solution()
-print(obj.minJumps(arr,n))
+# arr = [0,1,1,1,1]
+# n = 11
+# obj = Solution()
+# print(obj.minJumps(arr,n))
+
+import re
+
+def isphonenum():
+    phonenumregex = re.compile(r'\d\d\d-\d\d\d-\d\d\d\d')
+    mo = phonenumregex.search('My number is 415-555-4242.')
+    print('Phone number found: ' + mo.group())
+
+# isphonenum()
+
+heroRegex = re.compile (r'Batman|Tina Fey')
+mo1 = heroRegex.search('Batman and Tina Fey')   
+print(mo1.group())

@@ -25,11 +25,14 @@ def Anagram(string1,string2):
         else:
             dict[string1[i]] = 1
 
+    print(dict)        
+
     for j in range(len(string2)):
         if string2[j] in dict:
             dict[string2[j]] = dict[string2[j]] - 1
         else:
             dict[string2[j]] = 1
+    print(dict)         
     maximum = max(dict.values())
     if maximum == 0:
         return True
@@ -40,3 +43,5 @@ def Anagram(string1,string2):
 string1 = "kamal"
 string2 = "lamak"
 print(Anagram(string1,string2))
+
+

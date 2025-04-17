@@ -17,7 +17,7 @@ def primeOrnot(numb):
     return True
 
 
-numb = 80380509999928600597
+numb = 89
 t0 = time.time()
 print(primeOrnot(numb))
 

@@ -2,7 +2,7 @@
 # Equality.py
 # Author : Shipra
 
-Array1 = [1, 2, 3, 4, 5, 7]
+Array1 = [1, 2, 3, 6, 5, 7,8]
 Array2 = [7, 5, 4, 3, 2, 1]
 
 flag = True
@@ -14,5 +14,7 @@ if len(Array2) == len(Array1):
         else:
             flag = True
             continue
+else:
+    flag = False        
 
 print(flag)

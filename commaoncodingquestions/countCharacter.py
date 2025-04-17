@@ -12,5 +12,5 @@ def countCharacter(string,char):
     return count
 
 
-string = "shipra"
-print(countCharacter(string,'p'))
+string = "kamala"
+print(countCharacter(string,'a'))

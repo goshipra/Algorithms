@@ -9,3 +9,12 @@ if target in InputString:
     print(InputString.replace(target,''))
 else:
     print("Not Found")
+
+new_string =''
+for element in InputString:
+    if element == target:
+        new_string = InputString.replace(target,'')   
+    else:
+        continue
+
+print(new_string)         

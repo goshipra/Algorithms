@@ -27,6 +27,23 @@ class Solution():
             return False
 
 
-string = ""
+string = "asa"
 obj = Solution()
-print(obj.isPalindrome(string))
+# print(obj.isPalindrome(string))
+
+
+def pallindrom(string):
+    string = string.lower()
+    newstring = ''
+    for element in string:
+        newstring = newstring + element.lower()
+    print(newstring) 
+    if string == newstring:
+        print("True")
+    else:
+        print("False") 
+
+pallindrom("Isi")  
+
+
+
