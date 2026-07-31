@@ -1,76 +1,55 @@
 #!/usr/bin/env python3
-# insertionsort.py
+# merge_sort.py
 # Author : Shipra
-import logging
 
 
-def userInput():
-    '''
-    Taking numbers as user input and
-    creating a  list of numbers
-    '''
-    initialListOfNumbers = []
-    userInputNumber = 0
-    while userInputNumber != '':
-        userInputNumber = input("Enter the value to create a list: ")
-        initialListOfNumbers.append(userInputNumber)
-
-    initialListOfNumbers.pop()
-    initialListOfNumbers = list(map(int, initialListOfNumbers))
-    return initialListOfNumbers
+def user_input():
+    """Take numbers as user input and build a list of ints."""
+    numbers = []
+    value = None
+    while value != "":
+        value = input("Enter the value to create a list: ")
+        if value != "":
+            numbers.append(int(value))
+    return numbers
 
 
-def MergeSortNumbers(initialListOfNumbers,k):
-    '''
-    Sorting a list of numbers using
-    MergeSortNumbers sort algorithm
-    '''
-    logging.debug(initialListOfNumbers)
-    if len(initialListOfNumbers) <=1 :
-        print(" List is already sorted ")
+def merge_sort(numbers):
+    """Sort a list of numbers in place using the merge sort algorithm."""
+    if len(numbers) <= 1:
+        return numbers
 
-    if len(initialListOfNumbers) > 1:
-        midvalue = len(initialListOfNumbers)//2
-        leftlist = initialListOfNumbers[:midvalue]
-        rightlist = initialListOfNumbers[midvalue:]
-        print(leftlist)
-        print(rightlist)
-        print("pass: ", k)
-        k+=1
-        MergeSortNumbers(leftlist,k)
-        MergeSortNumbers(rightlist,k)
+    mid = len(numbers) // 2
+    left = numbers[:mid]
+    right = numbers[mid:]
 
-        i = j = l = 0
+    merge_sort(left)
+    merge_sort(right)
 
-        while len(leftlist) > i and len(rightlist) > j:
-            if leftlist[i] > rightlist[j]:
-                initialListOfNumbers[l] = rightlist[j]
-                j+=1
-            else:
-                initialListOfNumbers[l] = leftlist[i]
-                i+=1
-            l+=1
-
-
-        while i < len(leftlist):
-            initialListOfNumbers[l] = leftlist[i]
+    i = j = k = 0
+    while i < len(left) and j < len(right):
+        if left[i] <= right[j]:
+            numbers[k] = left[i]
             i += 1
-            l += 1
-
-        while j < len(rightlist):
-            initialListOfNumbers[l] = rightlist[j]
+        else:
+            numbers[k] = right[j]
             j += 1
-            l += 1
+        k += 1
 
-    print(initialListOfNumbers)
+    while i < len(left):
+        numbers[k] = left[i]
+        i += 1
+        k += 1
+
+    while j < len(right):
+        numbers[k] = right[j]
+        j += 1
+        k += 1
+
+    return numbers
 
 
-
-logging.basicConfig(level=logging.DEBUG)
-
-for number in range(1):
-    initialListOfNumbers = userInput()
-    print("Original list of numbers" + str(number) + " =", initialListOfNumbers)
-    logging.debug(initialListOfNumbers)
-    k=1
-    MergeSortNumbers(initialListOfNumbers,k)
+if __name__ == "__main__":
+    initial_numbers = user_input()
+    print("Original list of numbers =", initial_numbers)
+    print(merge_sort(initial_numbers))

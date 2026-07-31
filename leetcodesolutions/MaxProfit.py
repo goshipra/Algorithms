@@ -2,18 +2,20 @@
 # MaxProfit.py
 # Author : Shipra
 
-class Solution(object):
+
+class Solution:
+    """
+    Given an array prices where prices[i] is the price of a stock on
+    day i, find the maximum profit from a single buy and a later sell.
+    """
+
     def maxProfit(self, prices):
-        """
-        find Maximum profit
-        """
-        left , right = 0,1
+        left, right = 0, 1
         result = 0
 
         while right < len(prices):
             if prices[left] < prices[right]:
-                profit = prices[right] - prices[left]
-                result = max(result, profit)
+                result = max(result, prices[right] - prices[left])
             else:
                 left = right
             right += 1
@@ -21,24 +23,6 @@ class Solution(object):
         return result
 
 
-
-
-
-prices =[7,6,5,4,3,2,1]
- # [7,1,5,3,6,4]
-# [2,4,1]
-obj = Solution()
-print(obj.maxProfit(prices))
-
-
-# MaxValue = 0
-# for i in range(0,len(prices)):
-#     for j in range(len(prices)-1,i,-1):
-#         if prices[i] > prices[j]:
-#             continue
-#         else:
-#             NewMaxValue = prices[j] - prices[i]
-#             if NewMaxValue > MaxValue:
-#                 MaxValue = NewMaxValue
-#
-# return MaxValue
+if __name__ == "__main__":
+    prices = [7, 6, 5, 4, 3, 2, 1]
+    print(Solution().maxProfit(prices))

@@ -1,46 +1,26 @@
-# Given an integer array nums, move all 0's to
-# the end of it while maintaining the relative order
-# of the non-zero elements.
-# Note that you must do this in-place without making a
-# copy of the array.
+#!/usr/bin/env python3
+# moveZeros.py
+# Author : Shipra
 
-class Solution(object):
+# Given an integer array nums, move all 0's to the end of it while
+# maintaining the relative order of the non-zero elements. Must be done
+# in place without making a copy of the array.
+
+
+class Solution:
     def moveZeroes(self, nums):
-        if len(nums) < 2:
-            return nums
+        insert_pos = 0
+        for num in nums:
+            if num != 0:
+                nums[insert_pos] = num
+                insert_pos += 1
 
-        left, right = 0, 1
-
-        while right < len(nums):
-            if nums[left] == 0 and nums[right] != 0:
-                nums[left], nums[right] = nums[right], nums[left]
-                left += 1
-                right += 1
-            elif nums[left] == 0 and nums[right] == 0:
-                right += 1
-            elif nums[left] != 0 and nums[right] == 0:
-                left += 1
-            elif nums[left] != 0 and nums[right] != 0:
-                left += 1
-                right += 1
+        for i in range(insert_pos, len(nums)):
+            nums[i] = 0
 
         return nums
 
 
-
-            # class Solution(object):
-#     def moveZeroes(self, nums):
-#         if len(nums) < 2:
-#             return nums
-#         i=0
-#         for elements in nums:
-#             if nums[i] == 0:
-#                 nums.append(0)
-#                 nums.remove(nums[i])
-#             i+=1
-#         return nums
-
-arr = [0,1,0,3,12]
-obj = Solution()
-answer = obj.moveZeroes(arr)
-print(answer)
+if __name__ == "__main__":
+    arr = [0, 1, 0, 3, 12]
+    print(Solution().moveZeroes(arr))

@@ -2,16 +2,19 @@
 # exercise.py
 # Author : Shipra
 
-MonthlyExpenses = [2200,2350,2600,2130,2190]
-print(MonthlyExpenses)
-FebExtraExpenses = MonthlyExpenses[1] - MonthlyExpenses[0]
-print(FebExtraExpenses)
-QuarterTotal = MonthlyExpenses[0] + MonthlyExpenses[1] +MonthlyExpenses[2]
-print(QuarterTotal)
-print(2000 in MonthlyExpenses)
+monthly_expenses = [2200, 2350, 2600, 2130, 2190]
+print(monthly_expenses)
 
-MonthlyExpenses.append(1980)
-print(MonthlyExpenses)
-MonthlyExpenses[3]= MonthlyExpenses[3]-200
-print(MonthlyExpenses)
+feb_extra_expenses = monthly_expenses[1] - monthly_expenses[0]
+print(feb_extra_expenses)
 
+quarter_total = sum(monthly_expenses[:3])
+print(quarter_total)
+
+print(2000 in monthly_expenses)
+
+monthly_expenses.append(1980)
+print(monthly_expenses)
+
+monthly_expenses[3] -= 200
+print(monthly_expenses)

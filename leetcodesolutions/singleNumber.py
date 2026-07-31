@@ -1,30 +1,22 @@
-class Solution(object):
+#!/usr/bin/env python3
+# singleNumber.py
+# Author : Shipra
+
+
+class Solution:
+    """
+    Given a non-empty array of integers nums, every element appears
+    twice except for one. Find that single one, in linear time and
+    constant extra space.
+    """
+
     def singleNumber(self, nums):
-        length = len(nums)
-        if length == 1:
-            return nums[0]
+        result = 0
+        for num in nums:
+            result ^= num
+        return result
 
-        if length % 2 == 0:
-            return "Invalid Output"
 
-        if length == 3:
-            first_element = nums[0]
-            if first_element in nums[1:]:
-                nums.remove(first_element)
-                nums.remove(first_element)
-                first_element = nums[0]
-                return first_element
-
-        i = 0
-        for element in nums[0:-2]:
-            first_element = nums[i]
-            if first_element in nums[1:]:
-                nums.remove(first_element)
-                nums.remove(first_element)
-            else:
-                first_element = nums[0]
-                return first_element
-
-arr = [2,2,1]
-obj = Solution()
-print(obj.singleNumber(arr))
+if __name__ == "__main__":
+    arr = [2, 2, 1]
+    print(Solution().singleNumber(arr))

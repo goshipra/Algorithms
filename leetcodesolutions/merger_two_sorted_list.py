@@ -1,47 +1,46 @@
-# Linked List
-
-class Node():
-    def __init__(self,data):
-        self.data=data
-        self.next=None
+#!/usr/bin/env python3
+# merger_two_sorted_list.py
+# Author : Shipra
 
 
-class HeadValue():
+class Node:
+    def __init__(self, data):
+        self.data = data
+        self.next = None
+
+
+class LinkedList:
     def __init__(self):
         self.head = None
 
     def printlist(self):
-        printvalue = self.head
-        while printvalue is not None:
-            print(printvalue.data)
-            printvalue = printvalue.next
+        node = self.head
+        while node is not None:
+            print(node.data)
+            node = node.next
 
 
-list = HeadValue()
-while True:
-    list.head = Node(1)
-val1 = Node(2)
-val2 = Node(3)
-
-list.head.next = val1
-val1.next = val2
-
-list.printlist()
-
+def list_input():
+    """Take numbers as user input and build a list of ints."""
+    values = []
+    value = None
+    while value != "":
+        value = input("Enter the value to create a list: ")
+        if value != "":
+            values.append(int(value))
+    return values
 
 
-def List_input():
-    list =[]
-    value='a'
-    while value!='':
-        value=int(input("Enter the value to create a list: "))
-        list.append(value)
-    list.pop()
-    return list
+if __name__ == "__main__":
+    linked_list = LinkedList()
+    linked_list.head = Node(1)
+    val1 = Node(2)
+    val2 = Node(3)
+    linked_list.head.next = val1
+    val1.next = val2
 
-for i in range(2):
-    list = List_input()
+    linked_list.printlist()
 
-    print("List" + str(i) + "= ",list)
-
-
+    for i in range(2):
+        values = list_input()
+        print("List" + str(i) + "= ", values)

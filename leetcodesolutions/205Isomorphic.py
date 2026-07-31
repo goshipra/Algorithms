@@ -2,51 +2,28 @@
 # 205Isomorphic.py
 # Author : Shipra
 
-class Solution(object):
-    def isIsomorphic(self, s, t):
-        newdict = {}
 
+class Solution:
+    """
+    Given two strings s and t, determine if they are isomorphic.
+    Two strings are isomorphic if the characters in s can be replaced
+    to get t, with a consistent one-to-one mapping.
+    """
+
+    def isIsomorphic(self, s, t):
         if len(s) != len(t):
             return False
 
+        mapping = {}
         for i in range(len(s)):
-            if s[i] not in newdict:
-                newdict[s[i]] = t[i]
-            else:
-                if newdict[s[i]] == t[i]:
-                    continue
-                else:
-                    return False
+            if s[i] not in mapping:
+                mapping[s[i]] = t[i]
+            elif mapping[s[i]] != t[i]:
+                return False
         return True
 
-    # def isIsomorphic(self, s, t):
-    #     """
-    #     :type s: str
-    #     :type t: str
-    #     :rtype: bool
-    #     """
-    #     if len(s) != len(t):
-    #         return False
-    #
-    #     dict = {}
-    #     for i in range(len(s)):
-    #         print(dict)
-    #         if s[i] in dict:
-    #             if dict[s[i]] != t[i]:
-    #                 return False
-    #             else:
-    #                 continue
-    #         else:
-    #             if t[i] in dict.values():
-    #                 return False
-    #             dict[s[i]] = t[i]
-    #
-    #     return True
 
-
-s = "add"
-t = "mef"
-obj = Solution()
-print(obj.isIsomorphic(s, t))
-
-
+if __name__ == "__main__":
+    s = "add"
+    t = "mef"
+    print(Solution().isIsomorphic(s, t))

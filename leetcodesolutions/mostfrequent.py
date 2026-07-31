@@ -2,40 +2,25 @@
 # mostfrequent.py
 # Author : Shipra
 
-class Solution(object):
+from collections import Counter
+
+
+class Solution:
+    """
+    Given an integer array nums, return the most frequent even element.
+    If there is a tie, return the smallest one. If no even element
+    exists, return -1.
+    """
+
     def mostFrequentEven(self, nums):
-        """
-        :type nums: List[int]
-        :rtype: int
-        """
-        evendict = {}
-        if len(nums) == 0:
+        counts = Counter(num for num in nums if num % 2 == 0)
+        if not counts:
             return -1
 
-        for num in nums:
-            if num % 2 != 0:
-                continue
-            else:
-                if num in evendict:
-                    evendict[num] = evendict[num] + 1
-                else:
-                    evendict[num] = 1
-
-        print(evendict)
-        if len(evendict) == 0:
-            return -1
-        maximum = max(evendict.values())
-        maxlist = []
-        for key in evendict:
-            if evendict[key] == maximum:
-                maxlist.append(key)
-
-        return min(maxlist)
+        maximum = max(counts.values())
+        return min(num for num, count in counts.items() if count == maximum)
 
 
-
-
-
-nums = [0,1,2,2,4,4,1]
-obj = Solution()
-print(obj.mostFrequentEven(nums))
+if __name__ == "__main__":
+    nums = [0, 1, 2, 2, 4, 4, 1]
+    print(Solution().mostFrequentEven(nums))

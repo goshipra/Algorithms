@@ -3,47 +3,37 @@
 # Author : Shipra
 
 
-class MinStack(object):
-    '''
-    Design a stack that supports push, pop, top, and
-    retrieving the minimum element in constant time.
-
-    Implement the MinStack class:
-
-    MinStack() initializes the stack object.
-    void push(int val) pushes the element val onto the stack.
-    void pop() removes the element on the top of the stack.
-    int top() gets the top element of the stack.
-    int getMin() retrieves the minimum element in the stack.
-    '''
+class MinStack:
+    """
+    Design a stack that supports push, pop, top, and retrieving the
+    minimum element, all in constant time.
+    """
 
     def __init__(self):
         self.stack = []
 
     def push(self, val):
-        if val is not None:
-            self.stack.append(val)
+        self.stack.append(val)
 
     def pop(self):
-        if len(self.stack) != 0:
+        if self.stack:
             self.stack.pop()
 
     def top(self):
-        if len(self.stack) != 0:
+        if self.stack:
             return self.stack[-1]
 
     def getMin(self):
-        if len(self.stack) != 0:
+        if self.stack:
             return min(self.stack)
 
 
-obj = MinStack()
-obj.push(3)
-obj.push(4)
-obj.push(2)
-obj.push(5)
-obj.pop()
-print(obj.getMin())
-print(obj.top())
-
-
+if __name__ == "__main__":
+    obj = MinStack()
+    obj.push(3)
+    obj.push(4)
+    obj.push(2)
+    obj.push(5)
+    obj.pop()
+    print(obj.getMin())
+    print(obj.top())

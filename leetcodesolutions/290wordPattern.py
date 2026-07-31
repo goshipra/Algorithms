@@ -2,48 +2,29 @@
 # 290wordPattern.py
 # Author : Shipra
 
-class Solution(object):
-    def wordPattern(self, pattern, s):
-        """
-        :type pattern: str
-        :type s: str
-        :rtype: bool
-        """
-        words = s.split()
-        new_dict = {}
 
+class Solution:
+    """
+    Given a pattern and a string s, find if s follows the same pattern,
+    where a full match means there is a one-to-one mapping between a
+    letter in pattern and a non-empty word in s.
+    """
+
+    def wordPattern(self, pattern, s):
+        words = s.split()
         if len(words) != len(pattern):
             return False
 
+        mapping = {}
         for i in range(len(pattern)):
-            if pattern[i] not in new_dict:
-                new_dict[pattern[i]] = words[i]
-            else:
-                if new_dict[pattern[i]] == words[i]:
-                    continue
-                else:
-                    return False
+            if pattern[i] not in mapping:
+                mapping[pattern[i]] = words[i]
+            elif mapping[pattern[i]] != words[i]:
+                return False
         return True
 
-        # words_list = s.split()
-        # if len(words_list) != len(pattern):
-        #     return False
-        # dict = {}
-        # for i in range(len(pattern)):
-        #     print(dict)
-        #     if pattern[i] in dict:
-        #         if dict[pattern[i]] != words_list[i]:
-        #             return False
-        #         else:
-        #             continue
-        #     else:
-        #         if words_list[i] in dict.values():
-        #             return False
-        #         dict[pattern[i]] = words_list[i]
-        # return True
 
-
-pattern = "aaa"
-s = "aa aa aa"
-obj = Solution()
-print(obj.wordPattern(pattern,s))
+if __name__ == "__main__":
+    pattern = "aaa"
+    s = "aa aa aa"
+    print(Solution().wordPattern(pattern, s))

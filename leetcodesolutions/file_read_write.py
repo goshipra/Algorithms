@@ -1,31 +1,18 @@
+#!/usr/bin/env python3
+# file_read_write.py
+# Author : Shipra
 
-with open('song.txt','r') as openfile:
-    text_content = openfile.read()
-    # print(text_content) print all content of a file
-    for t in text_content:
-        # print(t) reads every characters and prints in each line
-        pass
+# Demonstrates the common ways to read a file in Python.
 
-with open('song.txt','r') as openfile:
-    line = openfile.readline()
-    # print(line) print first line
-    for t in line:
-        # print(t) print fist line all charactes if not specified
-        pass
+with open("song.txt", "r") as f:
+    text_content = f.read()  # reads the whole file as a single string
 
-with open('song.txt','r') as openfile:
-    lines = openfile.readlines()
+with open("song.txt", "r") as f:
+    first_line = f.readline()  # reads just the first line
+
+with open("song.txt", "r") as f:
+    lines = f.readlines()  # reads all lines into a list
     print(lines)
-    for t in lines:
-        # print(t) This will print each line from file
-        pass
 
-# Reading image
-with open('img.png','rb') as image1:
-    image = image1.read()
-    # print(image)
-
-
-
-
-
+with open("img.png", "rb") as f:
+    image = f.read()  # binary read for non-text files

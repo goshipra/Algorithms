@@ -2,22 +2,18 @@
 # clockAngle.py
 # Author : Shipra
 
-def clockAngle(hours, minutes):
-    """
-    Given hours and minutes of the clock and return angle
-    """
 
-    MinuteHandAnglePerMinute = 360 / 60
-    HourHandAnglePerMinute = 360 / (12 * 60)
+def clock_angle(hours, minutes):
+    """Return the smaller angle (in degrees) between the clock hands."""
+    minute_hand_angle_per_minute = 360 / 60
+    hour_hand_angle_per_minute = 360 / (12 * 60)
 
-    TotalHourAngle = (hours * 60 + minutes) * HourHandAnglePerMinute
-    TotalMinuteAngle = minutes * MinuteHandAnglePerMinute
+    total_hour_angle = (hours * 60 + minutes) * hour_hand_angle_per_minute
+    total_minute_angle = minutes * minute_hand_angle_per_minute
 
-    Angle = abs(TotalHourAngle - TotalMinuteAngle)
-    MinAngle = min(Angle, 360-Angle)
-
-    return MinAngle
+    angle = abs(total_hour_angle - total_minute_angle)
+    return min(angle, 360 - angle)
 
 
-result = clockAngle(2, 45)
-print(result)
+if __name__ == "__main__":
+    print(clock_angle(2, 45))

@@ -3,33 +3,28 @@
 # Author : Shipra
 
 
-class Solution(object):
+class Solution:
+    """
+    Given a roman numeral string s, convert it to an integer.
+    """
+
+    ROMAN = {"I": 1, "V": 5, "X": 10, "L": 50, "C": 100, "D": 500, "M": 1000}
+
     def romanToInt(self, s):
-        """
-        :type s: str
-        :rtype: int
-        """
-        roman = { 'I' : 1,'V' : 5, 'X' : 10,'L' : 50,
-        'C' : 100,'D' : 500,'M' : 1000}
-        integer = 0
-        if s in roman:
-            return roman[s]
+        if s in self.ROMAN:
+            return self.ROMAN[s]
 
-        for i in range(1,len(s)):
-            if roman[s[i]] <= roman[s[i-1]]:
-                integer = integer + roman[s[i-1]]
+        total = 0
+        for i in range(len(s) - 1):
+            if self.ROMAN[s[i]] < self.ROMAN[s[i + 1]]:
+                total -= self.ROMAN[s[i]]
             else:
-                integer = integer - roman[s[i-1]]
-        integer = integer + roman[s[i]]
+                total += self.ROMAN[s[i]]
+        total += self.ROMAN[s[-1]]
 
-        return integer
-
-
-s = "LVIII"
-obj = Solution()
-print(obj.romanToInt(s))
+        return total
 
 
-
-
-
+if __name__ == "__main__":
+    s = "LVIII"
+    print(Solution().romanToInt(s))

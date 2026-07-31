@@ -1,21 +1,20 @@
 #!/usr/bin/env python3
-# ratio.py
+# ration.py
 # Author : Shipra
 
-def countratio(array):
-    dict = {}
+
+def count_ratio(array):
+    """Print the frequency and relative frequency of each element."""
+    counts = {}
     n = len(array)
 
     for element in array:
-        if element in dict:
-            dict[element] = dict[element] + 1
-        else:
-            dict[element] = 1
-    print(dict)
+        counts[element] = counts.get(element, 0) + 1
 
-    for element in dict:
-        print(dict[element]/n)
+    for element in counts:
+        print(counts[element] / n)
 
 
-array = [-4, 3, -9, 0, 4, 1]
-countratio(array)
+if __name__ == "__main__":
+    array = [-4, 3, -9, 0, 4, 1]
+    count_ratio(array)

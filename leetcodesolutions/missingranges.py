@@ -2,68 +2,39 @@
 # missingranges.py
 # Author : Shipra
 
-# LeetCode — 163. Missing Ranges Given a sorted integer array nums, where the range of elements are in the inclusive
-# range [lower, upper], return its missing ranges.
+# LeetCode 163. Missing Ranges — given a sorted integer array nums, where
+# the range of elements are in the inclusive range [lower, upper], return
+# its missing ranges.
 #
 # Example:
-#
-# Input: nums = [0, 1, 3, 50, 75], lower = 0 and upper = 99,
+# Input: nums = [0, 1, 3, 50, 75], lower = 0, upper = 99
 # Output: ["2", "4->49", "51->74", "76->99"]
 
 
-class Solution():
+class Solution:
     def missingranges(self, nums, lower, upper):
-        reslist = []
-        if len(nums) == 0:
-            reslist.append(str(lower) +' -> '+ str(upper))
-            return reslist
+        if not nums:
+            return [f"{lower} -> {upper}"]
 
         if nums[0] != lower:
-            nums = [lower-1] + nums
+            nums = [lower - 1] + nums
         if nums[-1] != upper:
-            nums = nums + [upper+1]
+            nums = nums + [upper + 1]
 
-        for i in range(len(nums)-1):
-            if nums[i] + 1 == nums[i+1]:
-                continue
-            else:
-                if nums[i] + 1 != nums[i+1] - 1:
-                    reslist.append(str(nums[i]+1) + ' -> ' + str(nums[i+1] -1))
-                else:
-                    reslist.append(str(nums[i]+1))
+        result = []
+        for i in range(len(nums) - 1):
+            gap_start = nums[i] + 1
+            gap_end = nums[i + 1] - 1
+            if gap_start == gap_end:
+                result.append(str(gap_start))
+            elif gap_start < gap_end:
+                result.append(f"{gap_start} -> {gap_end}")
 
-        return reslist
-
-#
-# class Solution():
-#     def missingranges(self, nums, lower, upper):
-#         reslist = []
-#         if len(nums) == 0:
-#             reslist.append(str(lower) + '->'+ str(upper))
-#             return reslist
-#
-#         if nums[0] != lower:
-#             nums = [lower - 1] + nums
-#         if nums[-1] != upper:
-#             nums = nums + [upper + 1]
-#
-#         print(nums)
-#         i = 0
-#         while i < len(nums) - 1:
-#             if nums[i] != nums[i + 1] - 1:
-#                 if nums[i] + 1 != nums[i + 1] - 1:
-#                     strin = str(nums[i] + 1) + '->' + str(nums[i + 1] - 1)
-#                     reslist.append(strin)
-#                 else:
-#                     strin = str(nums[i] + 1)
-#                     reslist.append(strin)
-#             i += 1
-#
-#         return reslist
+        return result
 
 
-nums = [0, 1, 3, 50, 75]
-lower = 0
-upper = 99
-ranges = Solution()
-print(ranges.missingranges(nums, lower, upper))
+if __name__ == "__main__":
+    nums = [0, 1, 3, 50, 75]
+    lower = 0
+    upper = 99
+    print(Solution().missingranges(nums, lower, upper))

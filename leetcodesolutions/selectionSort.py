@@ -1,51 +1,35 @@
 #!/usr/bin/env python3
-# insertionsort.py
+# selectionSort.py
 # Author : Shipra
+
 import logging
-import sys
-
-def userInput():
-    '''
-    Taking numbers as user input and
-    creating a  list of numbers
-    '''
-    initialListOfNumbers = []
-    userInputNumber = 0
-    while userInputNumber != '':
-        userInputNumber = input("Enter the value to create a list: ")
-        initialListOfNumbers.append(userInputNumber)
-
-    initialListOfNumbers.pop()
-    initialListOfNumbers = list(map(int, initialListOfNumbers))
-    return initialListOfNumbers
 
 
-def SelectionSortNumbers(initialListOfNumbers):
-    '''
-    Sorting a list of numbers using
-    selection sort algorithm
-    '''
-    newlist = []
-    for i in range(len(initialListOfNumbers)):
+def user_input():
+    """Take numbers as user input and build a list of ints."""
+    numbers = []
+    value = None
+    while value != "":
+        value = input("Enter the value to create a list: ")
+        if value != "":
+            numbers.append(int(value))
+    return numbers
+
+
+def selection_sort(numbers):
+    """Sort a list of numbers using the selection sort algorithm."""
+    for i in range(len(numbers)):
         minimum = i
-        for j in range(i+1,len(initialListOfNumbers)):
-            if initialListOfNumbers[j] < initialListOfNumbers[minimum]:
+        for j in range(i + 1, len(numbers)):
+            if numbers[j] < numbers[minimum]:
                 minimum = j
-        logging.debug(initialListOfNumbers)
-        initialListOfNumbers[i],initialListOfNumbers[minimum] =  initialListOfNumbers[minimum] , initialListOfNumbers[i]
+        numbers[i], numbers[minimum] = numbers[minimum], numbers[i]
+        logging.debug(numbers)
+    return numbers
 
 
-
-    print("The final sorted list:", initialListOfNumbers)
-
-
-
-
-
-logging.basicConfig(level=logging.DEBUG)
-
-for number in range(1):
-    initialListOfNumbers = userInput()
-    print("Original list of numbers" + str(number) + " =", initialListOfNumbers)
-    logging.debug(initialListOfNumbers)
-    SelectionSortNumbers(initialListOfNumbers)
+if __name__ == "__main__":
+    logging.basicConfig(level=logging.DEBUG)
+    initial_numbers = user_input()
+    print("Original list of numbers =", initial_numbers)
+    print("The final sorted list:", selection_sort(initial_numbers))

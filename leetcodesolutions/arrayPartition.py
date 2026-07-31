@@ -2,20 +2,18 @@
 # arrayPartition.py
 # Author : Shipra
 
-class Solution(object):
+
+class Solution:
+    """
+    Given an integer array nums of 2n integers, group these integers into
+    n pairs so that the sum of the minimum of each pair is maximized.
+    """
+
     def arrayPairSum(self, nums):
-        """
-        :type nums: List[int]
-        :rtype: int
-        """
         nums.sort()
-        res = 0
-        for i in range(0,len(nums),2):
-            res += nums[i]
-
-        return res
+        return sum(nums[::2])
 
 
-nums = [6, 2, 6, 5, 1, 2]
-obj = Solution()
-print(obj.arrayPairSum(nums))
+if __name__ == "__main__":
+    nums = [6, 2, 6, 5, 1, 2]
+    print(Solution().arrayPairSum(nums))

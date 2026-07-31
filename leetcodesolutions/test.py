@@ -1,19 +1,25 @@
-lis1 = [1, 2, 3, 4, 5, 6, 7]
-lis2 = [4, 5, 6, 7, 8, 8, 9]
-
-res = []
-i = 0
-j = 0
-while i < len(lis1) and j < len(lis2):
-    if lis1[i] < lis2[j]:
-        res.append(lis1[i])
-        i += 1
-    else:
-        res.append(lis2[j])
-        j += 1
+#!/usr/bin/env python3
+# test.py
+# Author : Shipra
 
 
-res = res +lis1[i:]+ lis2[j:]
+def merge_sorted_lists(list1, list2):
+    """Merge two sorted lists into a single sorted list."""
+    result = []
+    i = j = 0
+
+    while i < len(list1) and j < len(list2):
+        if list1[i] < list2[j]:
+            result.append(list1[i])
+            i += 1
+        else:
+            result.append(list2[j])
+            j += 1
+
+    return result + list1[i:] + list2[j:]
 
 
-print(res)
+if __name__ == "__main__":
+    list1 = [1, 2, 3, 4, 5, 6, 7]
+    list2 = [4, 5, 6, 7, 8, 8, 9]
+    print(merge_sorted_lists(list1, list2))

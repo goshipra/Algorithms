@@ -2,23 +2,17 @@
 # Duplicates.py
 # Author : Shipra
 
-class Solution(object):
+
+class Solution:
+    """
+    Given an integer array nums, return true if any value appears at
+    least twice in the array, and false if every element is distinct.
+    """
+
     def containsDuplicate(self, nums):
-        '''
-        Given an integer array nums, return true if any
-        value appears at least twice in the array,
-         and return false if every element is distinct.
-        '''
-        newset = set()
-        for num in nums:
-            if num in newset:
-                return True
-            else:
-                newset.add(num)
-
-        return False
+        return len(set(nums)) != len(nums)
 
 
-nums = [1,2,3,1]
-obj = Solution()
-print(obj.containsDuplicate(nums))
+if __name__ == "__main__":
+    nums = [1, 2, 3, 1]
+    print(Solution().containsDuplicate(nums))

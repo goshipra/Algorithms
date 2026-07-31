@@ -2,16 +2,19 @@
 # climbingStairs.py
 # Author : Shipra
 
-class Solution(object):
+
+class Solution:
+    """
+    You are climbing a staircase of n steps. Each time you can climb
+    1 or 2 steps. Return the number of distinct ways to climb to the top.
+    """
+
     def climbStairs(self, n):
-        one,two = 1, 1
-
-        for i in range(n-1):
-            temp = one
-            one = one + two
-            two = temp
-
+        one, two = 1, 1
+        for _ in range(n - 1):
+            one, two = one + two, one
         return one
 
-obj = Solution()
-print(obj.climbStairs(4))
+
+if __name__ == "__main__":
+    print(Solution().climbStairs(4))

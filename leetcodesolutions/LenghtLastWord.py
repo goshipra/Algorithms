@@ -1,24 +1,18 @@
 #!/usr/bin/env python3
-# LengthLastWord.py
+# LenghtLastWord.py
 # Author : Shipra
 
 
-class Solution(object):
+class Solution:
+    """
+    Given a string s consisting of words and spaces, return the length
+    of the last word in the string.
+    """
+
     def lengthOfLastWord(self, s):
-        """
-            find lenth of last word in a sentence
-        """
-        result = 0
-
-        for c in reversed(s):
-            if c == ' ':
-                break
-            else:
-                result += 1
-
-        return result
+        return len(s.split()[-1])
 
 
-s ="luffy is still joyboy"
-obj = Solution()
-print(obj.lengthOfLastWord(s))
+if __name__ == "__main__":
+    s = "luffy is still joyboy"
+    print(Solution().lengthOfLastWord(s))

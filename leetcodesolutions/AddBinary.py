@@ -3,62 +3,30 @@
 # Author : Shipra
 
 
-class Solution(object):
+class Solution:
     """
-    Given two binary strings a and b, return
-    their sum as a binary string.
+    Given two binary strings a and b, return their sum as a binary string.
     """
+
     def addBinary(self, a, b):
-        OutputString = ''
+        a, b = a[::-1], b[::-1]
+        result = []
+        carry = 0
 
-        if len(a) != len(b):
-            if len(a) > len(b):
-                lenght = len(a) - len(b)
-                b = '0' * lenght + b
-            else:
-                lenght = len(b) - len(a)
-                a = '0' * lenght + a
+        for i in range(max(len(a), len(b))):
+            bit_a = int(a[i]) if i < len(a) else 0
+            bit_b = int(b[i]) if i < len(b) else 0
+            total = bit_a + bit_b + carry
+            result.append(str(total % 2))
+            carry = total // 2
 
+        if carry:
+            result.append("1")
 
-        Stringlength = len(a) - 1
-        carry = '0'
-        for i in range(Stringlength,-1,-1):
-
-            if carry == '1':
-                if a[i] == '1' and b[i] == '1':
-                    OutputString = '1' + OutputString
-                    carry = '1'
-                elif a[i] == '1' and b[i] == '0':
-                    OutputString = '0' + OutputString
-                    carry = '1'
-                elif a[i] == '0' and b[i] == '1':
-                    OutputString = '0' + OutputString
-                    carry = '1'
-                elif a[i] == '0' and b[i] == '0':
-                    OutputString = '1' + OutputString
-                    carry = '0'
-            else:
-                if a[i] == '0' and b[i] == '1':
-                    OutputString = '1' + OutputString
-                    carry = '0'
-                elif a[i] == '1' and b[i] == '0':
-                    OutputString = '1' + OutputString
-                    carry = '0'
-                elif a[i] == '1' and b[i] == '1':
-                    OutputString = '0' + OutputString
-                    carry = '1'
-                elif a[i] == '0' and b[i] == '0':
-                    OutputString = '0' + OutputString
-                    carry = '0'
+        return "".join(reversed(result))
 
 
-        if carry == '1':
-            OutputString = '1' + OutputString
-
-        return OutputString
-
-
-a = '1010'
-b = '1011'
-obj = Solution()
-print(obj.addBinary(a,b))
+if __name__ == "__main__":
+    a = "1010"
+    b = "1011"
+    print(Solution().addBinary(a, b))

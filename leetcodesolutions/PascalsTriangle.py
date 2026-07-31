@@ -2,31 +2,24 @@
 # PascalsTriangle.py
 # Author : Shipra
 
-class Solution(object):
+
+class Solution:
+    """
+    Given an integer rowIndex, return the rowIndex-th (0-indexed) row
+    of Pascal's triangle.
+    """
+
     def getRow(self, rowIndex):
-        """
-        Implementing Pascals Triangle
-        """
-        ResultList = []
+        rows = []
 
-        for i in range(0, rowIndex+1):
-            row = []
+        for i in range(rowIndex + 1):
+            row = [1] * (i + 1)
+            for j in range(1, i):
+                row[j] = rows[i - 1][j - 1] + rows[i - 1][j]
+            rows.append(row)
 
-            if i == 0:
-                row.append(1)
-            else:
-                row.insert(0, 1)
-                row.insert(i, 1)
-
-                for j in range(1, i):
-                    leftabove = ResultList[i - 1][j - 1]
-                    rightabove = ResultList[i - 1][j]
-                    row.insert(j, leftabove + rightabove)
-
-            ResultList.append(row)
-
-        return ResultList[-1]
+        return rows[-1]
 
 
-obj = Solution()
-print(obj.getRow(5))
+if __name__ == "__main__":
+    print(Solution().getRow(5))

@@ -2,35 +2,23 @@
 # inttoroman.py
 # Author : Shipra
 
-class Solution(object):
+
+class Solution:
+    """
+    Given an integer num, convert it to a roman numeral.
+    """
+
+    VALUES = [1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1]
+    SYMBOLS = ["M", "CM", "D", "CD", "C", "XC", "L", "XL", "X", "IX", "V", "IV", "I"]
+
     def intToRoman(self, num):
-        """
-        :type num: int
-        :rtype: str
-        """
-        nums = [1, 4, 5, 9, 10, 40, 50, 90,
-                100, 400, 500, 900, 1000]
-        roman = ["I", "IV", "V", "IX", "X", "XL", "L", "XC",
-                 "C", "CD", "D", "CM", "M"]
-
-        if num in nums:
-            ind = nums.index(num)
-            return roman[ind]
-
-        i = 12
-        result = ''
-        while num:
-            print(i, ":i")
-            quotient = num // nums[i]
-            num = num % nums[i]
-            print("quotient",quotient)
-            while quotient:
-                result = result + roman[i]
-                quotient = quotient - 1
-            i = i - 1
-        return result
+        result = []
+        for value, symbol in zip(self.VALUES, self.SYMBOLS):
+            count, num = divmod(num, value)
+            result.append(symbol * count)
+        return "".join(result)
 
 
-n = 19
-obj = Solution()
-print(obj.intToRoman(n))
+if __name__ == "__main__":
+    n = 19
+    print(Solution().intToRoman(n))
