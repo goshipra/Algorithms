@@ -1,0 +1,12 @@
+../.idea/
+.DS_Store
+*.log
+newfile.py
+numbers.txt
+test.py
+tut.py
+uploads/
+workfile.txt
+workwithfile.py
+temp/
+.idea/
